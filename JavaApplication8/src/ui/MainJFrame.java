@@ -6,7 +6,7 @@
 package ui;
 
 import model.jdbcConnection;
-
+import ui.Doctor.DoctorAreaJPanel;
 import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,6 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
+        
 
     }
 
@@ -181,33 +182,13 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try { ResultSet rs = null;
-            // TODO add your handling code here:
-            String dbURL = "jdbc:mysql://database-1.cog3jk7pua93.us-east-2.rds.amazonaws.com:3306/Bloodbank";
-            String username = "admin";
-            String password = "Namrataisbad";
-            
-            Connection conn = DriverManager.getConnection(dbURL, username, password);
-            String sql = "select role from test where userName=? and password=?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1,jTextField2.getText());
-            statement.setString(2,jTextField3.getText());
-            //System.out.print(jTextField3.getText());
-            
-           rs = statement.executeQuery();
-            while(rs.next())
-            { 
-                String role=(rs.getString("role"));
-                if(role.equalsIgnoreCase("Doctor"));
-            {   
-                addPatient patient = new addPatient();
-            jSplitPane2.setRightComponent(patient);
-            }
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        jdbcConnection connection = new jdbcConnection();
+        String[] arr = connection.getRole(jTextField2.getText(),jTextField3.getText());
+        if(arr[1].equalsIgnoreCase("doctor"))
+        { DoctorAreaJPanel doctorPanel = new DoctorAreaJPanel();
+            jSplitPane2.setRightComponent(doctorPanel);
         }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
