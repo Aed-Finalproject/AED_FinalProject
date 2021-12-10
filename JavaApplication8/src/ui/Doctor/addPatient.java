@@ -4,6 +4,9 @@
  */
 package ui.Doctor;
 
+
+=======
+import com.mysql.jdbc.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -104,19 +107,23 @@ public class addPatient extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                    String dbURL = "jdbc:mysql://127.0.0.1:3306/local_db";
-            String username = "root";
-            String password = "Apple@950826";
 
-            Connection conn = null; 
         try {
-            conn = DriverManager.getConnection(dbURL, username, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(addPatient.class.getName()).log(Level.SEVERE, null, ex);
-        }
-   String sql = "INSERT INTO vital_sign (Name,max_bp,min_bp,max_gl,min_gl,body_temp,id) VALUES (?,?,?,?,?,?,?);";
-        try {
+            String dbURL = "jdbc:mysql://database-1.cog3jk7pua93.us-east-2.rds.amazonaws.com:3306/Bloodbank";
+            String username = "admin";
+            String password = "Namrataisbad";
+            
+            Connection conn = DriverManager.getConnection(dbURL, username, password);
+            String sql = "insert into test (userName,password,role) values (?,?,?);";
             PreparedStatement statement = conn.prepareStatement(sql);
+           statement.setString(1,"test");
+           statement.setString(2,"test");
+           statement.setString(3,"Doctor");
+           statement.executeUpdate();
+            //PreparedStatement pstmt2 = conn.prepareStatement(statement);
+//            ResultSet neighborhoodRs = statement.executeQuery();
+//            System.out.println(neighborhoodRs);
+
         } catch (SQLException ex) {
             Logger.getLogger(addPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
