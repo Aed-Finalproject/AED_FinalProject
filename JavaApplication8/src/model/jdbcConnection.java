@@ -48,7 +48,7 @@ public class jdbcConnection {
     
     public String[] getRole(String userName,String password)
     {   String role=null;
-    String[] arr = new String[2];
+        String[] arr = new String[2];
         try {
         ResultSet rs = null;
         Connection conn = connect();
