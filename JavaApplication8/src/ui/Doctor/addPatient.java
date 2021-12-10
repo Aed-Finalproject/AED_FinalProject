@@ -4,13 +4,13 @@
  */
 package ui.Doctor;
 
-import com.sun.jdi.connect.spi.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.Connection;
 
 /**
  *
@@ -108,9 +108,18 @@ public class addPatient extends javax.swing.JPanel {
             String username = "root";
             String password = "Apple@950826";
 
-            Connection conn = DriverManager.getConnection(dbURL, username, password); 
+            Connection conn = null; 
+        try {
+            conn = DriverManager.getConnection(dbURL, username, password);
+        } catch (SQLException ex) {
+            Logger.getLogger(addPatient.class.getName()).log(Level.SEVERE, null, ex);
+        }
    String sql = "INSERT INTO vital_sign (Name,max_bp,min_bp,max_gl,min_gl,body_temp,id) VALUES (?,?,?,?,?,?,?);";
-    PreparedStatement statement = conn.prepareStatement(sql);
+        try {
+            PreparedStatement statement = conn.prepareStatement(sql);
+        } catch (SQLException ex) {
+            Logger.getLogger(addPatient.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
