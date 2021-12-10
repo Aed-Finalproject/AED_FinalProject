@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -45,12 +46,13 @@ public class jdbcConnection {
             }
         }
     
-    public String getRole(String userName,String password)
+    public String[] getRole(String userName,String password)
     {   String role=null;
+    String[] arr = new String[2];
         try {
         ResultSet rs = null;
         Connection conn = connect();
-        String sql = "select role from personTable where userName=? and password=?";
+        String sql = "select role,insuranceNumber from personTable where userName=? and password=?";
         PreparedStatement statement = conn.prepareStatement(sql);
         
         
@@ -61,13 +63,58 @@ public class jdbcConnection {
         
         rs = statement.executeQuery();
         while(rs.next())
-        {
-             role=(rs.getString("role"));
+        {   arr[0] = rs.getString("insuranceNumber");
+             arr[1] = rs.getString("role");
             
         }
+        disConnnect(conn);
         } catch (SQLException ex) {
             Logger.getLogger(jdbcConnection.class.getName()).log(Level.SEVERE, null, ex);
         }  
-    return role;
+    return arr;
 }
+    public String createrole(String userName, String password, String role)
+    {   Connection conn = connect();
+        String insuranceNumber =null;
+        UUID uuid = UUID.randomUUID();
+        insuranceNumber = uuid.toString(); 
+        String sql = "INSERT INTO personTable(userName,password,role,insuranceNumber) VALUES(?,?,?,?)";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,userName);
+            pstmt.setString(2,password);
+            pstmt.setString(3,role);
+            pstmt.setString(4,insuranceNumber);
+          
+            pstmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(jdbcConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disConnnect(conn);
+        return insuranceNumber;
+                
+    }
+    public String createdonor(String insuranceNumber,String donorName,String bloodGroup,int age,String bloodDonation,int phoneNumber, String organDonation)
+    {       Connection conn = connect();
+            String message = null;
+            String sql = "INSERT INTO donorTable(donorName,age,bloodGroup,phoneNumber,bloodDonation,organDonation,insuranceNumber) VALUES(?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,donorName);
+            pstmt.setInt(2,age);
+            pstmt.setString(3,bloodGroup);
+            pstmt.setInt(4,phoneNumber);
+            pstmt.setString(5, bloodDonation);
+            pstmt.setString(6, organDonation);
+            pstmt.setString(7, insuranceNumber);
+            pstmt.executeUpdate();
+            message = "New donor has been created successfully";
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(jdbcConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disConnnect(conn);
+        return message;
+    }
 }

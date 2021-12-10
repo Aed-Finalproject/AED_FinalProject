@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ui;
-
+import model.jdbcConnection;
 /**
  *
  * @author kashr
@@ -118,6 +118,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        jdbcConnection connection = new jdbcConnection();
+        String values[] = connection.getRole(jTextField1.getText(),String.valueOf(jPasswordField1.getPassword()));
+        if(values[0] == "doctor")
+        {
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
