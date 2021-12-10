@@ -4,8 +4,9 @@
  */
 package ui.Doctor;
 
-import com.mysql.jdbc.Driver;
 
+=======
+import com.mysql.jdbc.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -106,6 +107,7 @@ public class addPatient extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         try {
             String dbURL = "jdbc:mysql://database-1.cog3jk7pua93.us-east-2.rds.amazonaws.com:3306/Bloodbank";
             String username = "admin";
@@ -121,6 +123,7 @@ public class addPatient extends javax.swing.JPanel {
             //PreparedStatement pstmt2 = conn.prepareStatement(statement);
 //            ResultSet neighborhoodRs = statement.executeQuery();
 //            System.out.println(neighborhoodRs);
+
         } catch (SQLException ex) {
             Logger.getLogger(addPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
