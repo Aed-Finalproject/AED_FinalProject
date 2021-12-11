@@ -7,6 +7,7 @@ package ui;
 
 import Business.EcoSystem;
 import Business.Role.DonorAdminRole;
+import Business.Role.HospitalAdminRole;
 import model.jdbcConnection;
 import ui.Doctor.DoctorAreaJPanel;
 import java.awt.BorderLayout;
@@ -162,6 +163,13 @@ public class MainJFrame extends javax.swing.JFrame {
             container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
             layout.next(container);
         }
+                      if(arr[1].equalsIgnoreCase("hospitaladmin")) {
+            HospitalAdminRole aRole = new HospitalAdminRole();
+            CardLayout layout = (CardLayout)container.getLayout();            
+            container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
+            layout.next(container);
+        }
+        
         logoutJButton.setEnabled(true);
 
     }//GEN-LAST:event_jButton2ActionPerformed
