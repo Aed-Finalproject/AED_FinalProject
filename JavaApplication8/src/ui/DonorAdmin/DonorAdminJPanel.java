@@ -5,17 +5,20 @@
  */
 package ui.DonorAdmin;
 
+import Business.DonorSystem.Donor;
+import Business.DonorSystem.DonorDirectory;
 import Business.EcoSystem;
 import Business.Person;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import model.jdbcConnection;
 
 /**
  *
  * @author kashr
  */
-public class DonorAdminJPanel extends javax.swing.JPanel {
+public final class DonorAdminJPanel extends javax.swing.JPanel {
     
     EcoSystem system;
     String DonorAdminID;
@@ -30,6 +33,24 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         this.system = _business;
         this.DonorAdminID = _DonorID;
         this.container = _container;
+        populateTable();
+    }
+    
+    public void populateTable(){  
+        System.out.print("Tryna populate \n");
+        DonorDirectory donorDir = system.getDonorList();
+        DefaultTableModel model = (DefaultTableModel) tblDonor.getModel();
+        model.setRowCount(0);                
+        donorDir.getDirectory().stream().map(item -> {
+            Object[] row = new Object[5];
+            row[0] = item.getName();
+            row[1] = item.getUniqueID();
+            row[2] = item.getBloodGroup();
+            row[3] = item.getAge();
+            return row;
+        }).forEachOrdered(row -> {
+            model.addRow(row);
+        });
     }
     
     /**
@@ -43,7 +64,7 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDonor = new javax.swing.JTable();
         btnUpdateDonor = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -60,6 +81,8 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         btnDeleteDonor = new javax.swing.JButton();
         btnAddNewDonor = new javax.swing.JButton();
         btnDeleteDonor1 = new javax.swing.JButton();
+        lblage = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
@@ -67,7 +90,7 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Donor List");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDonor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -75,10 +98,15 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Name", "Insurance Number", "Blood Group", "Age"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblDonor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDonorMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblDonor);
 
         btnUpdateDonor.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdateDonor.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -113,17 +141,11 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("BLOOD GROUP");
 
-        txtdonorName.setText("jTextField1");
-
-        txtdonorEmail.setText("jTextField1");
-
-        txtdonorContact.setText("jTextField1");
-
-        txtdonorAddress.setText("jTextField1");
-
-        txtdonorCity.setText("jTextField1");
-
-        txtdonorBloodGrp.setText("jTextField1");
+        txtdonorEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdonorEmailActionPerformed(evt);
+            }
+        });
 
         btnDeleteDonor.setBackground(new java.awt.Color(255, 255, 255));
         btnDeleteDonor.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -152,6 +174,16 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        lblage.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblage.setForeground(new java.awt.Color(255, 255, 255));
+        lblage.setText("AGE");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,27 +197,6 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
                         .addGap(102, 102, 102)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtdonorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtdonorEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtdonorContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtdonorAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtdonorCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
@@ -193,13 +204,45 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
                                         .addComponent(btnDeleteDonor)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtdonorBloodGrp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnUpdateDonor)
                                         .addGap(40, 40, 40)
                                         .addComponent(btnAddNewDonor)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                                        .addComponent(btnDeleteDonor1)))))))
+                                        .addComponent(btnDeleteDonor1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtdonorBloodGrp, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtdonorEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtdonorName))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtdonorCity))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtdonorAddress))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtdonorContact)))
+                                        .addGap(115, 115, 115)
+                                        .addComponent(lblage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(32, 32, 32)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
@@ -209,12 +252,14 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtdonorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblage, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtdonorName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtdonorEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -233,7 +278,7 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtdonorBloodGrp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteDonor)
                     .addComponent(btnUpdateDonor)
@@ -264,6 +309,34 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteDonor1ActionPerformed
 
+    private void txtdonorEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdonorEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdonorEmailActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void tblDonorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDonorMouseClicked
+        // TODO add your handling code here:
+      int selectedRowIndex= tblDonor.getSelectedRow();
+        
+       if(selectedRowIndex<0){            
+            return;
+       }
+       DefaultTableModel model= (DefaultTableModel) tblDonor.getModel();
+       String insuranceNumber= (String) model.getValueAt(selectedRowIndex, 1);
+       
+       Donor donor = system.getDonor(insuranceNumber);
+       
+       txtdonorName.setText(donor.getName());
+       txtdonorEmail.setText(donor.getEmail());
+       txtdonorAddress.setText(donor.getAddress());
+       txtdonorCity.setText(donor.getCity());
+       txtdonorBloodGrp.setText(donor.getBloodGroup());
+       txtdonorContact.setText(donor.getPhoneNumber());
+    }//GEN-LAST:event_tblDonorMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddNewDonor;
@@ -278,7 +351,9 @@ public class DonorAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblage;
+    private javax.swing.JTable tblDonor;
     private javax.swing.JTextField txtdonorAddress;
     private javax.swing.JTextField txtdonorBloodGrp;
     private javax.swing.JTextField txtdonorCity;

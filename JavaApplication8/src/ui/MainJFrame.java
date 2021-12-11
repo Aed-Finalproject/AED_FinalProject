@@ -7,7 +7,10 @@ package ui;
 
 import Business.EcoSystem;
 import Business.Role.DonorAdminRole;
+
+import Business.Role.DonorRole;
 import Business.Role.HospitalAdminRole;
+
 import model.jdbcConnection;
 import ui.Doctor.DoctorAreaJPanel;
 import java.awt.BorderLayout;
@@ -45,8 +48,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     
     void initializeSystem(){
-        system = EcoSystem.getInstance();
-        system.intializeRoles();
+        system = EcoSystem.getInstance();        
     }
 
     /**
@@ -157,6 +159,12 @@ public class MainJFrame extends javax.swing.JFrame {
             container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
             layout.next(container);
         }
+
+        if(arr[1].equalsIgnoreCase("donor")) {
+            DonorRole aRole = new DonorRole();
+            CardLayout layout = (CardLayout)container.getLayout();            
+            container.add("donorworkarea", aRole.createWorkArea(container, this.system, arr[0]));
+
          if(arr[1].equalsIgnoreCase("sysadmin")) {
             SysAdminRole aRole = new SysAdminRole();
             CardLayout layout = (CardLayout)container.getLayout();            
@@ -167,16 +175,17 @@ public class MainJFrame extends javax.swing.JFrame {
             HospitalAdminRole aRole = new HospitalAdminRole();
             CardLayout layout = (CardLayout)container.getLayout();            
             container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
+
             layout.next(container);
         }
         
         logoutJButton.setEnabled(true);
-
+        jButton2.setEnabled(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
     
-
+        jButton2.setEnabled(true);
         txtUserName.setText("");
         jpswd.setText("");
 
@@ -185,7 +194,9 @@ public class MainJFrame extends javax.swing.JFrame {
         container.add("blank", blankJP);
         CardLayout crdLyt = (CardLayout) container.getLayout();
         crdLyt.next(container);
-      
+        logoutJButton.setEnabled(false);    
+        
+        
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
