@@ -164,6 +164,7 @@ public class MainJFrame extends javax.swing.JFrame {
             DonorRole aRole = new DonorRole();
             CardLayout layout = (CardLayout)container.getLayout();            
             container.add("donorworkarea", aRole.createWorkArea(container, this.system, arr[0]));
+        }
 
          if(arr[1].equalsIgnoreCase("sysadmin")) {
             SysAdminRole aRole = new SysAdminRole();
