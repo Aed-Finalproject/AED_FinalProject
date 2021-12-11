@@ -22,6 +22,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import ui.Doctor.addPatient;
 import ui.DonorAdmin.DonorAdminJPanel;
+import ui.Sysadmin.SysAdminPanel;
+import Business.Role.SysAdminRole;
 
 
 
@@ -143,13 +145,19 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        String[] arr = system.getConnection().getRole(txtUserName.getText(),jpswd.getText());
+        String[] arr = system.getConnection().getRole(txtUserName.getText(),String.valueOf(jpswd.getPassword()));
         if(arr[1].equalsIgnoreCase("doctor"))
         { DoctorAreaJPanel doctorPanel = new DoctorAreaJPanel();
             jSplitPane2.setRightComponent(doctorPanel);
         }
         if(arr[1].equalsIgnoreCase("donoradmin")) {
             DonorAdminRole aRole = new DonorAdminRole();
+            CardLayout layout = (CardLayout)container.getLayout();            
+            container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
+            layout.next(container);
+        }
+         if(arr[1].equalsIgnoreCase("sysadmin")) {
+            SysAdminRole aRole = new SysAdminRole();
             CardLayout layout = (CardLayout)container.getLayout();            
             container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
             layout.next(container);
