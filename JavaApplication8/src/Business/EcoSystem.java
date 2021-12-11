@@ -5,6 +5,8 @@
  */
 package Business;
 
+import Business.DonorSystem.Donor;
+import Business.DonorSystem.DonorDirectory;
 import Business.Role.DonorAdminRole;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -23,11 +25,11 @@ public class EcoSystem {
     
     // Ctor
     private EcoSystem(){
-        this.connection = new jdbcConnection();
+        EcoSystem.connection = new jdbcConnection();
     }
     
     public jdbcConnection getConnection(){
-        return this.connection;
+        return EcoSystem.connection;
     }
         
     public static EcoSystem getInstance(){
@@ -37,15 +39,7 @@ public class EcoSystem {
         }
         return business;
     }
-    
-    
-    public ArrayList<Role> intializeRoles() {
-        ArrayList<Role> roleList=new ArrayList<Role>();
-        //roleList.add(new SystemAdminRole());
-        roleList.add(new DonorAdminRole());
-        return roleList;
-    }
-        
+            
     // validate mobile number
     public Boolean validateMobileNo(String phoneNo)
     {
@@ -63,5 +57,17 @@ public class EcoSystem {
 
         Matcher matcher = pattern.matcher(email);
         return (matcher.matches());
+    }
+    
+    public DonorDirectory getDonorList(){
+        return connection.getDonorList();
+    }
+    
+    public Donor getDonor(String ID){
+        return connection.getDonor(ID);
+    }
+    
+    public void updateDonor(Donor donor){
+        connection.updateDonor(donor);
     }
 }

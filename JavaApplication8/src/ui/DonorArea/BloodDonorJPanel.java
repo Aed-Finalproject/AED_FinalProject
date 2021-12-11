@@ -5,17 +5,36 @@
  */
 package ui.DonorArea;
 
+import Business.DonorSystem.Donor;
+import Business.EcoSystem;
+import Business.Role.DonorRole;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author kashr
  */
 public class BloodDonorJPanel extends javax.swing.JPanel {
+    
+    JPanel container;
+    EcoSystem system;
+    Donor donor;
 
     /**
      * Creates new form OrganDonorJPanel
      */
-    public BloodDonorJPanel() {
+    public BloodDonorJPanel(JPanel _container, EcoSystem _system, Donor _donor) {
         initComponents();
+        this.container = _container;
+        this.system = _system;
+        this.donor = _donor;
+        populateFields();
+    }
+    
+    void populateFields(){
+        System.out.print("\n Blood Donor: " + this.donor.getUniqueID() + "\n");
+        
     }
 
     /**
@@ -79,11 +98,17 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DONATION HISTORY");
 
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Available for Donation");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -139,7 +164,18 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        DonorRole aRole = new DonorRole();
+        CardLayout layout = (CardLayout)container.getLayout();            
+        container.add("donorworkarea", aRole.createWorkArea(container, this.system, this.donor.getUniqueID()));
+        layout.next(container);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        boolean checked = jCheckBox1.isSelected();
+        donor.setIsBloodDonor(checked);
+        system.updateDonor(donor);
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
