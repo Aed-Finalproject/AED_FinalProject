@@ -43,7 +43,7 @@ public class Hospitaladmin extends javax.swing.JPanel {
     }
 void initializeSystem(){
         system = EcoSystem.getInstance();
-        system.intializeRoles();
+//        system.intializeRoles();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -231,12 +231,12 @@ void initializeSystem(){
         System.out.print(insNo);
         jdbcConnection jdbconnection = new jdbcConnection();
         
-        jdbconnection.createDoctor(docUname, hospitalName, insNo, docPhone);  
+        //jdbconnection.createDoctor(docUname, hospitalName, insNo, docPhone);  
     }//GEN-LAST:event_btnSubmitDocActionPerformed
 
     private void btnAddDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDocActionPerformed
-                DoctorManagement doctormanagement = new DoctorManagement(container, system, hospitalAdminID);
-        container.add("donorCreatePanel", doctormanagement);
+               // DoctorManagement doctormanagement = new DoctorManagement(container, system, hospitalAdminID);
+        //container.add("donorCreatePanel", doctormanagement);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container); 
     }//GEN-LAST:event_btnAddDocActionPerformed
