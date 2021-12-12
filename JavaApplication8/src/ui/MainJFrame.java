@@ -28,6 +28,8 @@ import ui.Doctor.addPatient;
 import ui.DonorAdmin.DonorAdminJPanel;
 import ui.Sysadmin.SysAdminPanel;
 import Business.Role.SysAdminRole;
+import Business.Role.BloodBankAdminRole;
+import Business.Role.BloodResearcherRole;
 
 
 
@@ -92,7 +94,11 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jpswd.setText("jPasswordField1");
+        jpswd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpswdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LoginjPanelLayout = new javax.swing.GroupLayout(LoginjPanel);
         LoginjPanel.setLayout(LoginjPanelLayout);
@@ -179,6 +185,18 @@ public class MainJFrame extends javax.swing.JFrame {
 
             layout.next(container);
         }
+             if(arr[1].equalsIgnoreCase("bloodbankadmin"))
+             { BloodBankAdminRole aRole = new BloodBankAdminRole();
+               CardLayout layout = (CardLayout)container.getLayout();
+               container.add("workarea", aRole.createWorkArea(container,this.system ,arr[0]));
+               layout.next(container);
+             }
+               if(arr[1].equalsIgnoreCase("bloodbankresearcher"))
+             { BloodResearcherRole aRole = new BloodResearcherRole();
+               CardLayout layout = (CardLayout)container.getLayout();
+               container.add("workarea", aRole.createWorkArea(container,this.system ,arr[0]));
+               layout.next(container);
+             }  
         
         logoutJButton.setEnabled(true);
         jButton2.setEnabled(false);
@@ -199,6 +217,10 @@ public class MainJFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_logoutJButtonActionPerformed
+
+    private void jpswdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpswdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpswdActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
