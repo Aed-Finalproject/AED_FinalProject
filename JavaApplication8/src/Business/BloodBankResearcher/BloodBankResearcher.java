@@ -10,18 +10,73 @@ package Business.BloodBankResearcher;
  * @author ABHI
  */
 public class BloodBankResearcher {
-    private String name;
+    private String id;
+    private String Name;
+    private String Age;
+    private String Address;
     private String phoneNumber;
-    private String address;
-    private String insuranceNumber;
-    private String bloodBankName;
+    private String zipCode;
+    private String City;
+    private String bloodBankID;
+    private String workAssigned;
+    private String foreignKey;
 
-    public String getName() {
-        return name;
+    public String getForeignKey() {
+        return foreignKey;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setForeignKey(String foreignKey) {
+        this.foreignKey = foreignKey;
+    }
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String City) {
+        this.City = City;
+    }
+ 
+    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+ 
+    
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+    public String getAge() {
+        return Age;
+    }
+
+    public void setAge(String Age) {
+        this.Age = Age;
+    }
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String Address) {
+        this.Address = Address;
     }
 
     public String getPhoneNumber() {
@@ -32,30 +87,23 @@ public class BloodBankResearcher {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress() {
-        return address;
+    public String getBloodBankID() {
+        return bloodBankID;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setBloodBankID(String bloodBankID) {
+        this.bloodBankID = bloodBankID;
     }
 
-    public String getInsuranceNumber() {
-        return insuranceNumber;
+    public String getWorkAssigned() {
+        return workAssigned;
     }
 
-    public void setInsuranceNumber(String insuranceNumber) {
-        this.insuranceNumber = insuranceNumber;
-    }
-
-    public String getBloodBankName() {
-        return bloodBankName;
-    }
-
-    public void setBloodBankName(String bloodBankName) {
-        this.bloodBankName = bloodBankName;
+    public void setWorkAssigned(String workAssigned) {
+        this.workAssigned = workAssigned;
     }
     
-    
+
+
     
 }
