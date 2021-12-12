@@ -42,6 +42,12 @@ public class Hospitaladmin extends javax.swing.JPanel {
         loadPatientTable();
     
     }
+
+void initializeSystem(){
+        system = EcoSystem.getInstance();
+//        system.intializeRoles();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,9 +144,30 @@ public class Hospitaladmin extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container);     }//GEN-LAST:event_btnAddPatientActionPerformed
 
+
+    private void txtDocUpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocUpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDocUpassActionPerformed
+
+    private void btnSubmitDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitDocActionPerformed
+
+        String docName = txtDocName.getText();
+        String docUname= txtDocUname.getText();
+        String hospitalName= "hospital";
+        String docUpass= txtDocUpass.getText();
+        String docPhone= txtDocphone.getText();
+        String doc = "doctor";
+        
+         String insNo = system.getConnection().createrole(docUname, docUpass, doc);
+        System.out.print(insNo);
+        jdbcConnection jdbconnection = new jdbcConnection();
+        
+        //jdbconnection.createDoctor(docUname, hospitalName, insNo, docPhone);  
+    }//GEN-LAST:event_btnSubmitDocActionPerformed
+
     private void btnAddDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDocActionPerformed
-                DoctorManagement doctormanagement = new DoctorManagement(container, system, hospitalAdminID);
-        container.add("donorCreatePanel", doctormanagement);
+               // DoctorManagement doctormanagement = new DoctorManagement(container, system, hospitalAdminID);
+        //container.add("donorCreatePanel", doctormanagement);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.next(container); 
     }//GEN-LAST:event_btnAddDocActionPerformed

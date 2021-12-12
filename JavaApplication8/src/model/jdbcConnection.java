@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -99,10 +100,10 @@ public class jdbcConnection {
         return insuranceNumber;
                 
     }
-    public String createdonor(String insuranceNumber,String donorName,String bloodGroup,int age, int bloodDonation,String phoneNumber, int organDonation, String address, String city)
+    public String createdonor(String insuranceNumber,String donorName,String bloodGroup,int age, int bloodDonation,String phoneNumber, int organDonation, String address, String city, String email)
     {       Connection conn = connect();
             String message = null;
-            String sql = "INSERT INTO donorTable(donorName,age,bloodGroup,phoneNumber,bloodDonation,organDonation,insuranceNumber,address,city) VALUES(?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO donorTable(donorName,age,bloodGroup,phoneNumber,bloodDonation,organDonation,insuranceNumber,address,city,email) VALUES(?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,donorName);
@@ -114,6 +115,7 @@ public class jdbcConnection {
             pstmt.setString(7, insuranceNumber);
             pstmt.setString(8, address);
             pstmt.setString(9, city);
+            pstmt.setString(10,email);
             pstmt.executeUpdate();
             message = "New donor has been created successfully";
             
@@ -124,6 +126,41 @@ public class jdbcConnection {
         return message;
     }
     
+    private Donor createDonorFromResult(ResultSet rs) throws SQLException{
+        String name = rs.getString("donorName");
+        String ID   = rs.getString("insuranceNumber");
+        String contact= rs.getString("phoneNumber");
+        String address= rs.getString("address");
+        String city= rs.getString("city");
+        int age= rs.getInt("age");
+        String email= rs.getString("email");
+        String bloodGroup= rs.getString("bloodGroup");
+        String organsToDonateStr = rs.getString("organsToDonate");
+        String donatedOrgansStr = rs.getString("donatedOrgans");
+         ArrayList<String> organsToDonate = new ArrayList<String>();
+        if(organsToDonateStr==null)
+        {
+        
+        }
+        else
+        { organsToDonate = new ArrayList<>(Arrays.asList(organsToDonateStr.split(",")));
+        }
+        ArrayList<String> donatedOrgans = new ArrayList<String>();
+        if(donatedOrgansStr==null)
+        {
+        
+        }
+        else
+        { donatedOrgans = new ArrayList<>(Arrays.asList(donatedOrgansStr.split(",")));
+        }
+       // ArrayList<String> donatedOrgans = new ArrayList<>(Arrays.asList(donatedOrgansStr.split(",")));                
+        Donor donor = new Donor(true, true, bloodGroup , name, "", ID,contact,address,city, age,email);
+        donor.setDonatedOrgans(donatedOrgans);
+        donor.setOrgansToDonate(organsToDonate);
+        return donor;        
+    }
+    
+
 
     // Returns a list of all donors
     public DonorDirectory getDonorList(){
@@ -139,12 +176,7 @@ public class jdbcConnection {
             rs = statement.executeQuery();
             while(rs.next())
             {   
-                ArrayList<String> aList = new ArrayList();
-                aList.add("kek");
-                String name = rs.getString("donorName");
-                String ID   = rs.getString("insuranceNumber");
-                String contact= rs.getString("phoneNumber");
-                Donor donor = new Donor(true, true, aList, "O+", name, "", ID,contact);                
+                Donor donor = createDonorFromResult(rs);
                 directory.add(donor);                
             }
             disConnnect(conn);
@@ -153,8 +185,7 @@ public class jdbcConnection {
         }
         
         donorDir.setDirectory(directory);
-        return donorDir;
-        // (boolean isBloodDonor, boolean isOrganDonor, ArrayList<String> donatedOrgans, String bloodGroup, String name, String password, String _ID)
+        return donorDir;        
     }
     
     public Donor getDonor(String donorID){
@@ -169,12 +200,7 @@ public class jdbcConnection {
             rs = statement.executeQuery();
             while(rs.next())
             {   
-                ArrayList<String> aList = new ArrayList();
-                aList.add("kek");
-                String name = rs.getString("donorName");
-                String ID   = rs.getString("insuranceNumber");
-                String contact= rs.getString("phoneNumber");
-                donor = new Donor(true, true, aList, "O+", name, "", ID, contact);                                
+                donor = createDonorFromResult(rs);
             }
             disConnnect(conn);
         } catch (SQLException ex) {
@@ -184,19 +210,50 @@ public class jdbcConnection {
     }
     
     public void updateDonor(Donor donor){
+        
         int bloodDonation = donor.isIsBloodDonor() ? 1 : 0;
-        String sql = "update donorTable set bloodDonation=? where insuranceNumber=?";
+        int organDonation = donor.isIsOrganDonor() ? 1 : 0;
+        
+        String name= donor.getName();
+        String contact= donor.getPhoneNumber();
+        String address= donor.getAddress();
+        String city= donor.getCity();
+        String email=donor.getEmail();
+        int age=donor.getAge();
+        
+        ArrayList<String> OrgansToDonate = donor.getOrgansToDonate();
+        String OrgansToDonateStr = "";
+        for(int i=0;i<OrgansToDonate.size();++i){
+            OrgansToDonateStr = OrgansToDonateStr + OrgansToDonate.get(i) + ",";
+        }
+        
+        ArrayList<String> donatedOrgans = donor.getDonatedOrgans();
+        String donatedOrganStr = "";
+        for(int i=0;i<donatedOrgans.size();++i){
+            donatedOrganStr = donatedOrganStr + donatedOrgans.get(i) + ",";
+        }
+        
+        String sql = "update donorTable set bloodDonation=?, donorName=?, age=?, phoneNumber=?, address=?, city=?, email=?, organDonation=?, organsToDonate=?, donatedOrgans=?  where insuranceNumber=?";
         Connection conn = connect();
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);            
             pstmt.setInt(1, bloodDonation);
-            pstmt.setString(2, donor.getUniqueID());
+            pstmt.setString(2, name);
+            pstmt.setInt(3, age);
+            pstmt.setString(4, contact);
+            pstmt.setString(5, address);
+            pstmt.setString(6, city);
+            pstmt.setString(7, email);
+            pstmt.setInt(8, organDonation);
+            pstmt.setString(9, OrgansToDonateStr);
+            pstmt.setString(10, donatedOrganStr);
+            pstmt.setString(11, donor.getUniqueID());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(jdbcConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         disConnnect(conn);
-        System.out.print("\n Donor updated! \n");
+        System.out.print("\n Donor " + name + " updated! \n");
     }
     public String createDoctor(String doctorName,String hospitalName,String insurenceNumber,String phoneNumber)
     {       Connection conn = connect();

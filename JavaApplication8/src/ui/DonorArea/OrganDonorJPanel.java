@@ -6,10 +6,13 @@
 package ui.DonorArea;
 
 import Business.DonorSystem.Donor;
+import Business.DonorSystem.DonorDirectory;
 import Business.EcoSystem;
 import Business.Role.DonorRole;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,6 +36,18 @@ public class OrganDonorJPanel extends javax.swing.JPanel {
     }
     
     void populateFields(){
+        ArrayList<String> organsToDonate = donor.getOrgansToDonate();
+        if(organsToDonate.isEmpty())
+            return;
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);                
+        organsToDonate.stream().map(item -> {
+            Object[] row = new Object[1];
+            row[0] = item;
+            return row;
+        }).forEachOrdered(row -> {
+            model.addRow(row);
+        });
         System.out.print("\n Organ Donor: " + donor.getUniqueID() + "\n");
     }
 
@@ -67,7 +82,7 @@ public class OrganDonorJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -100,7 +115,7 @@ public class OrganDonorJPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Choose Organ to Donate");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Liver", "Kidney", "Heart", "Lung", "Pancreas" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -167,6 +182,13 @@ public class OrganDonorJPanel extends javax.swing.JPanel {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        ArrayList<String> organsToDonate = donor.getOrgansToDonate();
+        String selectedItem = (String)jComboBox1.getSelectedItem();
+        System.out.print("\n Selected organ" + selectedItem + "\n");
+        organsToDonate.add(selectedItem);
+        donor.setOrgansToDonate(organsToDonate);
+        system.updateDonor(donor);
+        populateFields();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
