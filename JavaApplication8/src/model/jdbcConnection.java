@@ -80,7 +80,8 @@ public class jdbcConnection {
     {   Connection conn = connect();
         String insuranceNumber =null;
         UUID uuid = UUID.randomUUID();
-        insuranceNumber = uuid.toString(); 
+        insuranceNumber = uuid.toString();
+        System.out.println(userName);
         String sql = "INSERT INTO personTable(userName,password,role,insuranceNumber) VALUES(?,?,?,?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -123,6 +124,7 @@ public class jdbcConnection {
         return message;
     }
     
+
     // Returns a list of all donors
     public DonorDirectory getDonorList(){
         DonorDirectory donorDir = new DonorDirectory();
@@ -216,6 +218,7 @@ public class jdbcConnection {
         disConnnect(conn);
         return message;
     }
+
 }
     
 
