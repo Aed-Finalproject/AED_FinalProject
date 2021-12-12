@@ -77,7 +77,8 @@ public class jdbcConnection {
     {   Connection conn = connect();
         String insuranceNumber =null;
         UUID uuid = UUID.randomUUID();
-        insuranceNumber = uuid.toString(); 
+        insuranceNumber = uuid.toString();
+        System.out.println(userName);
         String sql = "INSERT INTO personTable(userName,password,role,insuranceNumber) VALUES(?,?,?,?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -117,4 +118,5 @@ public class jdbcConnection {
         disConnnect(conn);
         return message;
     }
+    
 }

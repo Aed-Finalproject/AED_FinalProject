@@ -81,6 +81,15 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         updateIDjLabel = new javax.swing.JLabel();
+        updateUserNamejTextField = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        updatePasswordjTextField = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        updatePhoneNumberjTextField3 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        addPasswordjTextField = new javax.swing.JTextField();
+        foreignjLabel = new javax.swing.JLabel();
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -128,14 +137,14 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Id", "Name", "City", "Address", "Zip Code", "Phone Number"
+                "Id", "Name", "City", "Address", "Zip Code", "Phone Number", "Foregin Key"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -154,6 +163,7 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
             jTable1.getColumnModel().getColumn(3).setResizable(false);
             jTable1.getColumnModel().getColumn(4).setResizable(false);
             jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(6).setResizable(false);
         }
 
         jButton3.setText("Delete");
@@ -197,8 +207,20 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Zip Code");
 
+        updateZipCodejTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateZipCodejTextFieldActionPerformed(evt);
+            }
+        });
+
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Phone Number");
+
+        updatePhoneNumberjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePhoneNumberjTextFieldActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Update");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -208,92 +230,144 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
         });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("Name");
+        jLabel15.setText("Id");
 
         updateIDjLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        updateUserNamejTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateUserNamejTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel16.setText("User Name");
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel17.setText("Password");
+
+        updatePasswordjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePasswordjTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setText("User Name");
+
+        updatePhoneNumberjTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePhoneNumberjTextField3ActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setText("Password");
+
+        addPasswordjTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPasswordjTextFieldActionPerformed(evt);
+            }
+        });
+
+        foreignjLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        foreignjLabel.setText("Id");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(updatePhoneNumberjTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addPasswordjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(193, 193, 193)
+                            .addComponent(jLabel6))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(15, 15, 15)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGap(193, 193, 193)
-                                    .addComponent(jLabel6))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(15, 15, 15)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(35, 35, 35)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(35, 35, 35)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(addAddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(addCityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(addNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(addphoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addzipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton2))))
+                                        .addComponent(addAddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(addCityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(addNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addphoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addzipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel13)
+                                                .addGap(135, 135, 135))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(29, 29, 29)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(foreignjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(updateNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(updateCityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(updateAddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(updateZipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(104, 104, 104))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGap(223, 223, 223))
+                                                .addComponent(updatePhoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(updateUserNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(updatePasswordjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(updateIDjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton3)
                                 .addGap(35, 35, 35)
                                 .addComponent(jButton4)
-                                .addGap(299, 299, 299))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(309, 309, 309))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(updatePhoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updateZipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updateCityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updateAddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(updateNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton5)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(updateIDjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(45, 45, 45)))
-                .addGap(225, 225, 225))
+                .addComponent(jButton5)
+                .addGap(358, 358, 358))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,52 +401,70 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
                         .addGap(16, 16, 16)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3)
                             .addComponent(jButton4))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(updateIDjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel15)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(updateIDjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)))
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel15)
+                                    .addComponent(foreignjLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(updateNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(updateCityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel18)
+                                    .addComponent(updatePhoneNumberjTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(addPasswordjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel19))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel14))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(updateNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(updateCityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(updateAddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(updateZipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(updatePhoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel10)
+                                    .addComponent(updateAddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(updateZipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton2))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(updatePhoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(updateUserNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePasswordjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addGap(18, 18, 18)
+                .addComponent(jButton5)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -384,7 +476,9 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        addBloodBank();
+        jdbcConnection jdbconnection = new jdbcConnection();
+        String insuranceNumber = jdbconnection.createrole(updatePhoneNumberjTextField3.getText(),addPasswordjTextField.getText(),"bloodbankadmin");
+        addBloodBank(insuranceNumber);
         setBloodJtable();
         
         
@@ -401,7 +495,12 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
         updateAddressjTextField.setText(model.getValueAt(row_val, 3).toString());
         updateZipCodejTextField.setText(model.getValueAt(row_val, 4).toString());
         updatePhoneNumberjTextField.setText(model.getValueAt(row_val, 5).toString());
-
+        System.out.println(model.getValueAt(row_val, 6).toString());
+        String[] arr = getCredentials(model.getValueAt(row_val, 6).toString());
+        updateUserNamejTextField.setText(arr[0]);
+        updatePasswordjTextField.setText(arr[1]);
+        foreignjLabel.setText(model.getValueAt(row_val, 6).toString());
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void updateNamejTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateNamejTextFieldActionPerformed
@@ -414,6 +513,9 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         updateBloodBank();
+        updateUserNamejTextField.setText("");
+        updatePasswordjTextField.setText("");
+
         setBloodJtable();
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -427,13 +529,39 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void updatePhoneNumberjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePhoneNumberjTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatePhoneNumberjTextFieldActionPerformed
+
+    private void updateUserNamejTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUserNamejTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateUserNamejTextFieldActionPerformed
+
+    private void updatePasswordjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePasswordjTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatePasswordjTextFieldActionPerformed
+
+    private void updatePhoneNumberjTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePhoneNumberjTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatePhoneNumberjTextField3ActionPerformed
+
+    private void addPasswordjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPasswordjTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addPasswordjTextFieldActionPerformed
+
+    private void updateZipCodejTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateZipCodejTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateZipCodejTextFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addAddressjTextField;
     private javax.swing.JTextField addCityjTextField;
     private javax.swing.JTextField addNamejTextField;
+    private javax.swing.JTextField addPasswordjTextField;
     private javax.swing.JTextField addphoneNumberjTextField;
     private javax.swing.JTextField addzipCodejTextField;
+    private javax.swing.JLabel foreignjLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -446,6 +574,10 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -459,14 +591,17 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField updateCityjTextField;
     private javax.swing.JLabel updateIDjLabel;
     private javax.swing.JTextField updateNamejTextField;
+    private javax.swing.JTextField updatePasswordjTextField;
     private javax.swing.JTextField updatePhoneNumberjTextField;
+    private javax.swing.JTextField updatePhoneNumberjTextField3;
+    private javax.swing.JTextField updateUserNamejTextField;
     private javax.swing.JTextField updateZipCodejTextField;
     // End of variables declaration//GEN-END:variables
-public void addBloodBank()
+public void addBloodBank(String insuranceNumber)
 {   jdbcConnection jdbconnection = new jdbcConnection();
     Connection conn = jdbconnection.connect();
     String message= null;
-String sql = "INSERT INTO bloodBankTable(Name,city,address,zipCode,phoneNumber) VALUES(?,?,?,?,?)";
+String sql = "INSERT INTO bloodBankTable(Name,city,address,zipCode,phoneNumber,foreignKey) VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,addNamejTextField.getText());
@@ -474,7 +609,7 @@ String sql = "INSERT INTO bloodBankTable(Name,city,address,zipCode,phoneNumber) 
             pstmt.setString(3,addAddressjTextField.getText());
             pstmt.setString(4,addzipCodejTextField.getText());
             pstmt.setString(5,addphoneNumberjTextField.getText());
-          
+            pstmt.setString(6,insuranceNumber);
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(container, "The hospital has been successfully added");
             setBloodJtable();
@@ -529,7 +664,7 @@ public void updateBloodBank()
     try {
     
     
-    String viewStatement = "UPDATE bloodBankTable SET Name=?, City=?, Address=?,zipCode=?,phoneNumber=? WHERE id=?";
+    String viewStatement = "UPDATE bloodBankTable SET Name=?, City=?, Address=?,zipCode=?,phoneNumber=? WHERE foreignKey=?";
     PreparedStatement pstmt;
     pstmt = conn.prepareStatement(viewStatement);
     pstmt.setString(1,updateNamejTextField.getText());
@@ -537,7 +672,8 @@ public void updateBloodBank()
     pstmt.setString(3,updateAddressjTextField.getText());
     pstmt.setString(4, updateZipCodejTextField.getText());
     pstmt.setString(5,updatePhoneNumberjTextField.getText());
-    pstmt.setString(6,updateIDjLabel.getText());
+    pstmt.setString(6,foreignjLabel.getText());
+    updateCredentials(foreignjLabel.getText(),updateUserNamejTextField.getText(),updatePasswordjTextField.getText());
 //    pstmt.setString(6,jLabel15.getText());
      pstmt.executeUpdate();
 //    DefaultTableModel updatemodel = (DefaultTableModel) jTable1.getModel();
@@ -553,13 +689,14 @@ public void updateBloodBank()
 //        jTable1.setValueAt(jTextField8.getText(),4, i);
 //        jTable1.setValueAt(jTextField9.getText(),5, i);
 //        jTable1.setValueAt(jTextField10.getText(),6, i);
-//  }
+//  }   
         updateNamejTextField.setText("");
          updateCityjTextField.setText("");
          updateAddressjTextField.setText("");
          updateZipCodejTextField.setText("");
          updatePhoneNumberjTextField.setText("");
          updateIDjLabel.setText("");
+         foreignjLabel.setText("");
   
         } catch (SQLException ex) {
             Logger.getLogger(HospitalManagementJPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -594,5 +731,68 @@ String sql = "DELETE FROM bloodBankTable where id =?";
         jdbconnection.disConnnect(conn);
         }
 
+}
+public String[] getCredentials(String insuranceNumber)
+{   String[] arr = new String[2];
+    jdbcConnection jdbconnection = new jdbcConnection();
+    Connection conn = jdbconnection.connect();
+        try {
+            ResultSet rs = null;
+            
+            String sql = "SELECT userName,password FROM personTable WHERE insuranceNumber=?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, insuranceNumber);
+            
+            
+            //System.out.print(jTextField3.getText());
+
+            rs = statement.executeQuery();
+            while(rs.next())
+            {
+            arr[0] = rs.getString("userName");
+            arr[1] = rs.getString("password");
+            }
+
+}       catch (SQLException ex) {
+            Logger.getLogger(BloodBankManagementJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            jdbconnection.disConnnect(conn);
+        }
+        return arr;
+}
+public String[] updateCredentials(String insuranceNumber,String username, String password)
+{   String[] arr = new String[2];
+    jdbcConnection jdbconnection = new jdbcConnection();
+    Connection conn = jdbconnection.connect();
+        try {
+            ResultSet rs = null;
+            
+            String viewStatement = "UPDATE personTable SET userName=?,password=? WHERE insuranceNumber=?";
+            PreparedStatement pstmt;
+           pstmt = conn.prepareStatement(viewStatement);
+           pstmt.setString(1,updateNamejTextField.getText());
+           pstmt.setString(2, updatePasswordjTextField.getText());
+           pstmt.setString(3,foreignjLabel.getText());
+           
+       //    pstmt.setString(6,jLabel15.getText());
+            pstmt.executeUpdate();
+
+            
+            
+            //System.out.print(jTextField3.getText());
+
+//            rs = statement.executeQuery();
+
+
+}       catch (SQLException ex) {
+            Logger.getLogger(BloodBankManagementJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            jdbconnection.disConnnect(conn);
+        }
+        return arr;
 }
 }
