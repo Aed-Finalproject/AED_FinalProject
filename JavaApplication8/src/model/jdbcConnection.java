@@ -81,7 +81,8 @@ public class jdbcConnection {
     {   Connection conn = connect();
         String insuranceNumber =null;
         UUID uuid = UUID.randomUUID();
-        insuranceNumber = uuid.toString(); 
+        insuranceNumber = uuid.toString();
+        System.out.println(userName);
         String sql = "INSERT INTO personTable(userName,password,role,insuranceNumber) VALUES(?,?,?,?)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -159,6 +160,8 @@ public class jdbcConnection {
         return donor;        
     }
     
+
+
     // Returns a list of all donors
     public DonorDirectory getDonorList(){
         DonorDirectory donorDir = new DonorDirectory();
@@ -252,4 +255,27 @@ public class jdbcConnection {
         disConnnect(conn);
         System.out.print("\n Donor " + name + " updated! \n");
     }
+    public String createDoctor(String doctorName,String hospitalName,String insurenceNumber,String phoneNumber)
+    {       Connection conn = connect();
+            String message = null;
+            String sql = "insert into doctorTable (doctorName,hospitalName,insuranceNumber,phoneNumber) values(?,?,?,?)";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,doctorName);
+            pstmt.setString(2,hospitalName);
+            pstmt.setString(3, insurenceNumber);
+            pstmt.setString(4, phoneNumber);
+    
+            pstmt.executeUpdate();
+            message = "New doctor has been created successfully";
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(jdbcConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disConnnect(conn);
+        return message;
+    }
+
 }
+    
+
