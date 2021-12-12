@@ -4,6 +4,18 @@
  */
 package ui.HostpitalAdmin;
 
+import Business.EcoSystem;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.jdbcConnection;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author rahuludhayakumar
@@ -13,8 +25,17 @@ public class DoctorPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorPanel
      */
-    public DoctorPanel() {
+    EcoSystem system;
+    String hospitalAdminID;
+    JPanel container;
+    public DoctorPanel(JPanel _container, EcoSystem _business, String _hospitalAdminID) {
         initComponents();
+                       this.system = _business;
+        this.hospitalAdminID = _hospitalAdminID;
+        this.container = _container;
+        loadPatientTable();
+        populateorgan();
+       populaterequestTable();
     }
 
     /**
@@ -26,19 +47,217 @@ public class DoctorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "id", "Name", "Age", "Phone number", "Blood Group", "Insurance Number"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jButton1.setText("Request");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Orgon");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "S.no", "PatientId", "Name", "Age", "BloodGrp", "InsuranceNo", "orgon", "DoctorID", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jButton2.setText("Accepted");
+
+        jButton3.setText("Deleted");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel6)
+                        .addGap(32, 32, 32)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jButton2)
+                        .addGap(96, 96, 96)
+                        .addComponent(jButton3)))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(jButton1)
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        int row_val = jTable2.getSelectedRow();
+        //        jLabel15.setText(model.getValueAt(row_val, 0).toString());
+        String id=(model.getValueAt(row_val, 0).toString());
+        String Name=(model.getValueAt(row_val, 1).toString());
+        String Age=(model.getValueAt(row_val, 2).toString());
+        String bloodGroup=(model.getValueAt(row_val, 4).toString());
+        String InsuranceNumber=(model.getValueAt(row_val, 5).toString());
+        String organ = jComboBox1.getSelectedItem().toString();
+        System.out.print(hospitalAdminID);
+        
+         jdbcConnection jdbconnection = new jdbcConnection();
+ Connection conn =jdbconnection.connect();
+  String sql = "insert into requestTable (patientID,Name,Age,BloodGroup,InsuranceNumber,Orgon,DoctorID,Status) "
+          + "values(?,?,?,?,?,?,?,?);";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,id);
+            pstmt.setString(2,Name);
+            pstmt.setString(3, Age);
+            pstmt.setString(4, bloodGroup);
+            pstmt.setString(5, InsuranceNumber);
+            pstmt.setString(6, organ);
+            pstmt.setString(7, hospitalAdminID);
+            pstmt.setString(8, "Requested");
+    
+            pstmt.executeUpdate();
+ 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(jdbcConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       finally{
+jdbconnection.disConnnect(conn);
+         }
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+     private void loadPatientTable() {
+        
+         jdbcConnection jdbconnection = new jdbcConnection();
+         Connection conn =jdbconnection.connect();
+         try {
+ResultSet rs = null;
+
+String sql = "select * from patientTable";
+PreparedStatement statement = conn.prepareStatement(sql);
+rs = statement.executeQuery();
+jTable2.setModel(DbUtils.resultSetToTableModel(rs));
+} catch (SQLException ex) {
+System.out.print(ex);
+}
+         finally{
+jdbconnection.disConnnect(conn);
+         }
+        
+    }
+     
+       public void populateorgan() {
+        jdbcConnection jdbconnection = new jdbcConnection();
+         Connection conn =jdbconnection.connect();
+         try{
+            String sql = "Select distinct organ from dropdown";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                     String hospital = resultSet.getString(1);
+                     jComboBox1.addItem(hospital);
+                 }
+            } catch (SQLException ex) {
+System.out.print(ex);
+}
+         finally{
+jdbconnection.disConnnect(conn);
+         }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+    private void populaterequestTable() {
+         jdbcConnection jdbconnection = new jdbcConnection();
+         Connection conn =jdbconnection.connect();
+         try {
+ResultSet rs = null;
+
+String sql = "select * from requestTable";
+PreparedStatement statement = conn.prepareStatement(sql);
+rs = statement.executeQuery();
+jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+} catch (SQLException ex) {
+System.out.print(ex);
+}
+         finally{
+jdbconnection.disConnnect(conn);
+         }    
+    }
 }

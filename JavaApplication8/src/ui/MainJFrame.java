@@ -30,6 +30,8 @@ import ui.Sysadmin.SysAdminPanel;
 import Business.Role.SysAdminRole;
 import Business.Role.BloodBankAdminRole;
 import Business.Role.BloodResearcherRole;
+import Business.Role.DoctorRole;
+import Business.Role.PatientRole;
 
 
 
@@ -156,8 +158,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
         String[] arr = system.getConnection().getRole(txtUserName.getText(),String.valueOf(jpswd.getPassword()));
         if(arr[1].equalsIgnoreCase("doctor"))
-        { DoctorAreaJPanel doctorPanel = new DoctorAreaJPanel();
-            jSplitPane2.setRightComponent(doctorPanel);
+        {           DoctorRole aRole = new DoctorRole();
+            CardLayout layout = (CardLayout)container.getLayout();            
+            container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
+            layout.next(container);
         }
         if(arr[1].equalsIgnoreCase("donoradmin")) {
             DonorAdminRole aRole = new DonorAdminRole();
@@ -198,6 +202,14 @@ public class MainJFrame extends javax.swing.JFrame {
                container.add("workarea", aRole.createWorkArea(container,this.system ,arr[0]));
                layout.next(container);
              }  
+                                     if(arr[1].equalsIgnoreCase("patient")) {
+            PatientRole aRole = new PatientRole();
+            CardLayout layout = (CardLayout)container.getLayout();            
+            container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
+
+            layout.next(container);
+        }
+        
         
         logoutJButton.setEnabled(true);
         jButton2.setEnabled(false);
