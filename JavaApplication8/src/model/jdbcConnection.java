@@ -117,4 +117,24 @@ public class jdbcConnection {
         disConnnect(conn);
         return message;
     }
+        public String createDoctor(String doctorName,String hospitalName,String insurenceNumber,String phoneNumber)
+    {       Connection conn = connect();
+            String message = null;
+            String sql = "insert into doctorTable (doctorName,hospitalName,insuranceNumber,phoneNumber) values(?,?,?,?)";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,doctorName);
+            pstmt.setString(2,hospitalName);
+            pstmt.setString(3, insurenceNumber);
+            pstmt.setString(4, phoneNumber);
+    
+            pstmt.executeUpdate();
+            message = "New doctor has been created successfully";
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(jdbcConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disConnnect(conn);
+        return message;
+    }
 }

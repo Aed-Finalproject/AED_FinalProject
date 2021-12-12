@@ -6,7 +6,7 @@ package Business.Role;
 
 import Business.EcoSystem;
 import javax.swing.JPanel;
-import ui.DonorAdmin.DonorAdminJPanel;
+import ui.HostpitalAdmin.Hospitaladmin;
 
 /**
  *
@@ -16,6 +16,6 @@ public class HospitalAdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel container, EcoSystem business, String ID) {
-        return new DonorAdminJPanel(container, business, ID);
+        return new Hospitaladmin(container, business, ID);
     }
 }
