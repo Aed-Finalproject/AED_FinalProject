@@ -21,4 +21,6 @@ public class DonorDirectory {
     public void setDirectory(ArrayList<Donor> directory) {
         this.directory = directory;
     }
+    
+    
 }
