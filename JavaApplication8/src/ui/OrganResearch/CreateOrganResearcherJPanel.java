@@ -64,23 +64,32 @@ public class CreateOrganResearcherJPanel extends javax.swing.JPanel {
         CityjTextField = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 51, 51));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ADD ORGAN RESEARCHER");
 
         NamejLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        NamejLabel.setForeground(new java.awt.Color(255, 255, 255));
         NamejLabel.setText("Name");
 
         AgejLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AgejLabel.setForeground(new java.awt.Color(255, 255, 255));
         AgejLabel.setText("Age");
 
         AddressjLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel.setText("Address");
 
         PhoneNumberjLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel.setText("Phone Number");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setText("Add Researcher");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,17 +98,23 @@ public class CreateOrganResearcherJPanel extends javax.swing.JPanel {
         });
 
         PhoneNumberjLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel1.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel1.setText("User Name");
 
         PhoneNumberjLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel2.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel2.setText("Password");
 
         AddressjLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel1.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel1.setText("ZipCode");
 
         AddressjLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel2.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel2.setText("City");
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,29 +129,13 @@ public class CreateOrganResearcherJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(AddressjLabel)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(AddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(NamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(AgejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addAgejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(AddressjLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(AddressjLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(zipCodejTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(CityjTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(addNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(zipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -144,17 +143,23 @@ public class CreateOrganResearcherJPanel extends javax.swing.JPanel {
                                     .addComponent(PhoneNumberjLabel)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(PhoneNumberjLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(PhoneNumberjLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(PhoneNumberjLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(AddressjLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(AddressjLabel1)
+                                    .addComponent(AddressjLabel)
+                                    .addComponent(AgejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(NamejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(48, 48, 48))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2)
                                 .addGap(109, 109, 109)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
-                            .addComponent(phoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addUserNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addPasswordjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(346, Short.MAX_VALUE))
+                            .addComponent(phoneNumberjTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addUserNamejTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addPasswordjTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(addAgejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(379, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +204,7 @@ public class CreateOrganResearcherJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

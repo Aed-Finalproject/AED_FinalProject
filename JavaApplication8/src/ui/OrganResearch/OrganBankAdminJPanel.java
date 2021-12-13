@@ -65,7 +65,6 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -110,10 +109,12 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         NamejLabel4 = new javax.swing.JLabel();
         IdjLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("ORGAN BANK  ADMIN PAGE");
+        setBackground(new java.awt.Color(0, 51, 51));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setText("Add Researcher");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,15 +168,22 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Update Researcher Information");
 
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+
         IdjLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        IdjLabel.setForeground(new java.awt.Color(255, 255, 255));
         IdjLabel.setText("Id");
 
         AgejLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AgejLabel.setForeground(new java.awt.Color(255, 255, 255));
         AgejLabel.setText("Age");
 
         AddressjLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel.setText("Address");
 
         AddressjTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -185,9 +193,11 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         PhoneNumberjLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel.setText("Phone Number");
 
         PhoneNumberjLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel1.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel1.setText("User Name");
 
         addUserNamejTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -203,9 +213,11 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         PhoneNumberjLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel2.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel2.setText("Password");
 
         AddressjLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel1.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel1.setText("ZipCode");
 
         zipCodejTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -215,6 +227,7 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         AddressjLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel2.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel2.setText("City");
 
         CityjTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -223,6 +236,8 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("Update ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,18 +246,23 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         NamejLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        NamejLabel1.setForeground(new java.awt.Color(255, 255, 255));
         NamejLabel1.setText("Name");
 
         NamejLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        NamejLabel2.setForeground(new java.awt.Color(255, 255, 255));
         NamejLabel2.setText("Researcher Id");
 
         NamejLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        NamejLabel3.setForeground(new java.awt.Color(255, 255, 255));
         NamejLabel3.setText("Name");
 
         AgejLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AgejLabel1.setForeground(new java.awt.Color(255, 255, 255));
         AgejLabel1.setText("Age");
 
         AddressjLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel3.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel3.setText("Address");
 
         AddressjTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -252,6 +272,7 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         AddressjLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel4.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel4.setText("ZipCode");
 
         zipCodejTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -261,6 +282,7 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         AddressjLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddressjLabel5.setForeground(new java.awt.Color(255, 255, 255));
         AddressjLabel5.setText("City");
 
         CityjTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -270,9 +292,11 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         PhoneNumberjLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel3.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel3.setText("Phone Number");
 
         PhoneNumberjLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel4.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel4.setText("User Name");
 
         addUserNamejTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -282,6 +306,7 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         PhoneNumberjLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        PhoneNumberjLabel5.setForeground(new java.awt.Color(255, 255, 255));
         PhoneNumberjLabel5.setText("Password");
 
         addPasswordjTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -290,6 +315,8 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,6 +325,7 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
         });
 
         NamejLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        NamejLabel4.setForeground(new java.awt.Color(255, 255, 255));
         NamejLabel4.setText("Researcher Id");
 
         IdjLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -310,44 +338,33 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(NamejLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(IdjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(56, 56, 56)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(26, 26, 26)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(NamejLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(AddressjLabel)
-                                            .addComponent(AddressjLabel2)
-                                            .addComponent(AgejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(AddressjLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(PhoneNumberjLabel)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(11, 11, 11)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(PhoneNumberjLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(PhoneNumberjLabel1))))
-                                .addGap(62, 62, 62)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addUserNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(phoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addAgejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(AddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(zipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addPasswordjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(jButton2)))))
+                            .addComponent(NamejLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddressjLabel)
+                            .addComponent(AddressjLabel2)
+                            .addComponent(AgejLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddressjLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PhoneNumberjLabel)
+                            .addComponent(PhoneNumberjLabel1)
+                            .addComponent(PhoneNumberjLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NamejLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(IdjLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addUserNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneNumberjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addAgejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddressjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(zipCodejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addPasswordjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CityjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(jButton2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -381,7 +398,7 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
                         .addGap(99, 99, 99))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(NamejLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(IdjLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(115, 115, 115))))
         );
@@ -430,9 +447,9 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
                         .addComponent(jButton3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NamejLabel2)
-                            .addComponent(IdjLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(IdjLabel)
+                            .addComponent(NamejLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(NamejLabel1)
                             .addComponent(addNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -464,56 +481,62 @@ public class OrganBankAdminJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(PhoneNumberjLabel2)
                             .addComponent(addPasswordjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addComponent(jButton2)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Delete Researcher Information");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Researcher To Be Deleted");
+
+        jLabel4.setFont(new java.awt.Font("Forte", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Organ Bank Admin ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 86, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(370, 370, 370)
-                        .addComponent(jLabel1))
+                        .addGap(419, 419, 419)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(187, 187, 187)
-                                .addComponent(jLabel3))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 894, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel2)
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -694,7 +717,7 @@ public void initalizeOrganBank(String insuranceNumber)
 
             rs = statement.executeQuery();
             while(rs.next())
-            { jLabel1.setText("Welcome to "+ rs.getString("Name")+ " Admin");
+            {
             
                     }
 //            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -789,9 +812,9 @@ public void setempty()
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

@@ -9,7 +9,13 @@ import Business.DonorSystem.Donor;
 import Business.EcoSystem;
 import Business.Role.DonorRole;
 import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JPanel;
+import model.jdbcConnection;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -30,6 +36,7 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
         this.system = _system;
         this.donor = _donor;
         populateFields();
+        loaddate();
     }
     
     void populateFields(){
@@ -170,7 +177,25 @@ public class BloodDonorJPanel extends javax.swing.JPanel {
         donor.setIsBloodDonor(checked);
         system.updateDonor(donor);
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void loaddate() {
+       
+                 jdbcConnection jdbconnection = new jdbcConnection();
+         Connection conn =jdbconnection.connect();
+         try {
+ResultSet rs = null;
 
+String sql = "select Date,Bank from dateTable";
+PreparedStatement statement = conn.prepareStatement(sql);
+rs = statement.executeQuery();
+jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+} catch (SQLException ex) {
+System.out.print(ex);
+}
+         finally{
+jdbconnection.disConnnect(conn);
+         }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
