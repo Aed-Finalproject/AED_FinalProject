@@ -417,9 +417,27 @@ public class BloodBankAdminJPanel extends javax.swing.JPanel {
         researcher.setPhoneNumber(phoneNumberjTextField.getText());
         researcher.setId(IdjLabel.getText());
         researcher.setForeignKey(jTable1.getValueAt(selectedRowIndex,9).toString());
-        JOptionPane.showMessageDialog(container, jTable1.getValueAt(selectedRowIndex,9).toString());
+        if( addUserNamejTextField.getText().isEmpty() || addPasswordjTextField.getText().isEmpty() || researcher.getName().isEmpty() ||
+            researcher.getAge().isEmpty() || researcher.getAddress().isEmpty() || researcher.getZipCode().isEmpty()|| researcher.getCity().isEmpty()||researcher.getPhoneNumber().isEmpty() ) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter all the required fields!");
+        }   else if (!business.validateMobileNo(researcher.getPhoneNumber())) {
+            JOptionPane.showMessageDialog(null, "Kindly enter a Valid Contact Number.");
+        } 
+        else
+        {
+       
         //researcher.setForeignKey();
        directory.updateBloodResearcher(researcher, addUserNamejTextField.getText(),addPasswordjTextField.getText());
+        IdjLabel.setText("");
+        addNamejTextField.setText("");
+        addAgejTextField.setText("");
+        AddressjTextField.setText("");
+        zipCodejTextField.setText("");
+        CityjTextField.setText("");
+        phoneNumberjTextField.setText("");
+        addUserNamejTextField.setText("");
+        addPasswordjTextField.setText("");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void zipCodejTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zipCodejTextFieldActionPerformed

@@ -468,11 +468,30 @@ public class OrganBankManagementJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      jdbcConnection jdbconnection = new jdbcConnection();
+                if( addNamejTextField.getText().isEmpty() || addPasswordjTextField.getText().isEmpty() || addCityjTextField.getText().isEmpty() ||
+ addAddressjTextField.getText().isEmpty() || addzipCodejTextField.getText().isEmpty() || addphoneNumberjTextField.getText().isEmpty()||addPasswordjTextField.getText().isEmpty() || addzipCodejTextField.getText().isEmpty() ) {
+JOptionPane.showMessageDialog(null, "Kindly Enter all the required fields!");
+}
+                
+else if (!business.validateMobileNo(addphoneNumberjTextField.getText())) {
+JOptionPane.showMessageDialog(null, "Kindly enter a Valid Contact Number.");
+
+}
+else
+{
+        jdbcConnection jdbconnection = new jdbcConnection();
       String insuranceNumber = jdbconnection.createrole(addUserNamejTextField.getText(),addPasswordjTextField.getText(),"organbankadmin");
         addOrganBank(insuranceNumber);
-       
-
+        addNamejTextField.setText("");
+        addPasswordjTextField.setText("");
+        addCityjTextField.setText("");
+        addAddressjTextField.setText("");
+        addzipCodejTextField.setText("");
+        addphoneNumberjTextField.setText("");
+        addPasswordjTextField.setText("");
+        addUserNamejTextField.setText("");
+        addPasswordjTextField.setText("");
+} 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -489,9 +508,28 @@ public class OrganBankManagementJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_updateCityjTextFieldActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if( updateUserNamejTextField.getText().isEmpty() || updatePasswordjTextField.getText().isEmpty() || updatePasswordjTextField.getText().isEmpty() ||
+            updateNamejTextField.getText().isEmpty() || updateCityjTextField.getText().isEmpty() || updateAddressjTextField.getText().isEmpty()|| updateCityjTextField.getText().isEmpty()||updateAddressjTextField.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter all the required fields!");
+        }   else if (!business.validateMobileNo(updatePhoneNumberjTextField.getText())) {
+            JOptionPane.showMessageDialog(null, "Kindly enter a Valid Contact Number.");
+        }
+        else
+        {
         updateOrganBank();
         setOrganJtable();
-       
+        updateUserNamejTextField.setText("");
+        updatePasswordjTextField.setText("");
+        foreignjLabel.setText("");
+        updateNamejTextField.setText("");
+        updateCityjTextField.setText("");
+        updateAddressjTextField.setText("");
+        updateZipCodejTextField.setText("");
+        updatePhoneNumberjTextField.setText("");
+        updateUserNamejTextField.setText("");
+        updatePasswordjTextField.setText("");
+        }
+  
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

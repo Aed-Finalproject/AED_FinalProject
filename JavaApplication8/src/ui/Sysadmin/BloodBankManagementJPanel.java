@@ -410,7 +410,7 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -459,8 +459,8 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
                             .addComponent(foreignjLabel)
                             .addComponent(jLabel15))
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(updateNamejTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -500,10 +500,21 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jdbcConnection jdbconnection = new jdbcConnection();
-        String insuranceNumber = jdbconnection.createrole(updatePhoneNumberjTextField3.getText(),addPasswordjTextField.getText(),"bloodbankadmin");
-        addBloodBank(insuranceNumber);
-        setBloodJtable();
+        if( addNamejTextField.getText().isEmpty() || addPasswordjTextField.getText().isEmpty() || addCityjTextField.getText().isEmpty() ||
+addAddressjTextField.getText().isEmpty() || addzipCodejTextField.getText().isEmpty() || addphoneNumberjTextField.getText().isEmpty()|| updatePhoneNumberjTextField3.getText().isEmpty()||addPasswordjTextField.getText().isEmpty() || addzipCodejTextField.getText().isEmpty() ) {
+JOptionPane.showMessageDialog(null, "Kindly Enter all the required fields!");
+}
+else if (!business.validateMobileNo(addphoneNumberjTextField.getText())) {
+JOptionPane.showMessageDialog(null, "Kindly enter a Valid Contact Number.");
+
+}
+else
+{
+jdbcConnection jdbconnection = new jdbcConnection();
+String insuranceNumber = jdbconnection.createrole(updatePhoneNumberjTextField3.getText(),addPasswordjTextField.getText(),"bloodbankadmin");
+addBloodBank(insuranceNumber);
+setBloodJtable();
+}
         
         
 // TODO add your handling code here:
@@ -536,11 +547,28 @@ public class BloodBankManagementJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_updateCityjTextFieldActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if( updateUserNamejTextField.getText().isEmpty() || updatePasswordjTextField.getText().isEmpty() || updatePasswordjTextField.getText().isEmpty() ||
+            updateNamejTextField.getText().isEmpty() || updateCityjTextField.getText().isEmpty() || updateAddressjTextField.getText().isEmpty()|| updateCityjTextField.getText().isEmpty()||updateAddressjTextField.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter all the required fields!");
+        }   else if (!business.validateMobileNo(updatePhoneNumberjTextField.getText())) {
+            JOptionPane.showMessageDialog(null, "Kindly enter a Valid Contact Number.");
+        }
+        else
+        {
         updateBloodBank();
+        updateUserNamejTextField.setText("");
+        updatePasswordjTextField.setText("");
+        foreignjLabel.setText("");
+        updateNamejTextField.setText("");
+        updateCityjTextField.setText("");
+        updateAddressjTextField.setText("");
+        updateZipCodejTextField.setText("");
+        updatePhoneNumberjTextField.setText("");
         updateUserNamejTextField.setText("");
         updatePasswordjTextField.setText("");
 
         setBloodJtable();
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void addNamejTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNamejTextFieldActionPerformed
