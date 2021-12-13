@@ -29,8 +29,11 @@ import Business.Role.SysAdminRole;
 import Business.Role.BloodBankAdminRole;
 import Business.Role.BloodResearcherRole;
 import Business.Role.DoctorRole;
+import Business.Role.OrganResearcherRole;
+import Business.Role.OrgranBankAdminRole;
 import Business.Role.PatientRole;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 
@@ -177,6 +180,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         String[] arr = system.getConnection().getRole(txtUserName.getText(),String.valueOf(jpswd.getPassword()));
+        if(arr[0]==null || arr[1]==null){
+             JOptionPane.showMessageDialog(container, "User not found,Please enter valid user!");
+        }
+        else{
         if(arr[1].equalsIgnoreCase("doctor"))
         {           DoctorRole aRole = new DoctorRole();
             CardLayout layout = (CardLayout)container.getLayout();            
@@ -222,17 +229,29 @@ public class MainJFrame extends javax.swing.JFrame {
                container.add("workarea", aRole.createWorkArea(container,this.system ,arr[0]));
                layout.next(container);
              }  
-                                     if(arr[1].equalsIgnoreCase("patient")) {
+               if(arr[1].equalsIgnoreCase("patient")) {
             PatientRole aRole = new PatientRole();
             CardLayout layout = (CardLayout)container.getLayout();            
             container.add("workarea", aRole.createWorkArea(container, this.system, arr[0]));
-
             layout.next(container);
         }
+               if(arr[1].equalsIgnoreCase("organbankadmin"))
+{ OrgranBankAdminRole aRole = new OrgranBankAdminRole();
+CardLayout layout = (CardLayout)container.getLayout();
+container.add("workarea", aRole.createWorkArea(container,this.system ,arr[0]));
+layout.next(container);
+}
+if(arr[1].equalsIgnoreCase("organbankresearcher"))
+{ OrganResearcherRole aRole = new OrganResearcherRole();
+CardLayout layout = (CardLayout)container.getLayout();
+container.add("workarea", aRole.createWorkArea(container,this.system ,arr[0]));
+layout.next(container);
+}
         
         
         logoutJButton.setEnabled(true);
         jButton2.setEnabled(false);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed

@@ -61,4 +61,39 @@ public class DonorDirectory {
         }
         return name;
 } 
+    public String getOrganResearcherName(String insuranceNumber)
+{
+jdbcConnection jdbconnection = new jdbcConnection();
+Connection conn = jdbconnection.connect();
+String name=null;
+try {
+ResultSet rs = null;
+
+String sql = "SELECT name FROM organResearcherTable WHERE personId=?";
+PreparedStatement statement = conn.prepareStatement(sql);
+statement.setString(1, insuranceNumber);
+
+
+//System.out.print(jTextField3.getText());
+
+
+
+rs = statement.executeQuery();
+while(rs.next())
+{
+name = rs.getString("name");
+
+}
+
+
+
+}
+catch (SQLException ex) {
+Logger.getLogger(DonorDirectory.class.getName()).log(Level.SEVERE, null, ex);
+} finally
+{
+jdbconnection.disConnnect(conn);
+}
+return name;
+}
 }

@@ -336,6 +336,12 @@ public class DoctorManagement extends javax.swing.JPanel {
         String docPhone= txtDocPhone.getText();
         String doc = "doctor";
         
+          if( docName.isEmpty() || docUname.isEmpty() || hospitalName.isEmpty() ||
+            docUpass.isEmpty() || docPhone.isEmpty() || doc.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter all the required fields!");
+        }   else if (!system.validateMobileNo(docPhone)) {
+            JOptionPane.showMessageDialog(null, "Kindly enter a Valid Contact Number.");
+        }      else{
          String insNo = system.getConnection().createrole(docUname, docUpass, doc);
         System.out.print(insNo);
         jdbcConnection jdbconnection = new jdbcConnection();
@@ -343,6 +349,7 @@ public class DoctorManagement extends javax.swing.JPanel {
         jdbconnection.createDoctor(docUname, hospitalName, insNo, docPhone);
         loadDoctor();
         JOptionPane.showMessageDialog(container, "New Doctor is added Sucessfully!!!");
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
