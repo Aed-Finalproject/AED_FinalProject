@@ -535,6 +535,10 @@ else
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
         int row_val = jTable3.getSelectedRow();
+                      if(row_val<0){
+                JOptionPane.showMessageDialog(this, "Please select a row to update");
+                return;
+            }
         //        jLabel15.setText(model.getValueAt(row_val, 0).toString());
         updatejLabel.setText(model.getValueAt(row_val, 0).toString());
         updateNamejTextField.setText(model.getValueAt(row_val, 1).toString());
@@ -725,6 +729,10 @@ String sql = "DELETE FROM organBankTable where id =?";
             DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             int row_val = jTable3.getSelectedRow();
+                          if(row_val<0){
+                JOptionPane.showMessageDialog(this, "Please select a row to Delete");
+                return;
+            }
             
             pstmt.setString(1,model.getValueAt(row_val, 0).toString());
            

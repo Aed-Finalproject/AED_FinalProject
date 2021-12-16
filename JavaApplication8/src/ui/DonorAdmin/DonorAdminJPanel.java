@@ -395,6 +395,7 @@ public final class DonorAdminJPanel extends javax.swing.JPanel {
        txtdonorBloodGrp.setText(donor.getBloodGroup());
        txtdonorContact.setText(donor.getPhoneNumber());
        txtAge.setText(Integer.toString(donor.getAge()));
+       isAvailablejCheckBox.setSelected(donor.isIsOrganDonor());
     }//GEN-LAST:event_tblDonorMouseClicked
     
     

@@ -137,6 +137,8 @@ public class jdbcConnection {
         String bloodGroup= rs.getString("bloodGroup");
         String organsToDonateStr = rs.getString("organsToDonate");
         String donatedOrgansStr = rs.getString("donatedOrgans");
+        boolean isBloodDonor = rs.getInt("bloodDonation")==1;
+        boolean isOrganDonor= rs.getInt("organDonation")==1;
          ArrayList<String> organsToDonate = new ArrayList<String>();
         if(organsToDonateStr==null)
         {
@@ -154,7 +156,7 @@ public class jdbcConnection {
         { donatedOrgans = new ArrayList<>(Arrays.asList(donatedOrgansStr.split(",")));
         }
        // ArrayList<String> donatedOrgans = new ArrayList<>(Arrays.asList(donatedOrgansStr.split(",")));                
-        Donor donor = new Donor(true, true, bloodGroup , name, "", ID,contact,address,city, age,email);
+        Donor donor = new Donor(isBloodDonor, isOrganDonor, bloodGroup , name, "", ID,contact,address,city, age,email);
         donor.setDonatedOrgans(donatedOrgans);
         donor.setOrgansToDonate(organsToDonate);
         return donor;        
@@ -212,7 +214,7 @@ public class jdbcConnection {
     public void updateDonor(Donor donor){
         
         int bloodDonation = donor.isIsBloodDonor() ? 1 : 0;
-        int organDonation = donor.isIsOrganDonor() ? 1 : 0;
+        //int organDonation = donor.isIsOrganDonor() ? 1 : 0;
         
         String name= donor.getName();
         String contact= donor.getPhoneNumber();
@@ -244,7 +246,7 @@ public class jdbcConnection {
             pstmt.setString(5, address);
             pstmt.setString(6, city);
             pstmt.setString(7, email);
-            pstmt.setInt(8, organDonation);
+            //spstmt.setInt(8, organDonation);
             pstmt.setString(9, OrgansToDonateStr);
             pstmt.setString(10, donatedOrganStr);
             pstmt.setString(11, donor.getUniqueID());

@@ -490,6 +490,10 @@ setHospitalJtable();
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         int row_val = jTable1.getSelectedRow();
+                      if(row_val<0){
+                JOptionPane.showMessageDialog(this, "Please select a row");
+                return;
+            }
         jLabel15.setText(model.getValueAt(row_val, 0).toString());
         jTextField6.setText(model.getValueAt(row_val, 1).toString());
         jTextField7.setText(model.getValueAt(row_val, 2).toString());
@@ -686,6 +690,10 @@ String sql = "DELETE FROM hospitalTable where hospitalId =?";
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             int row_val = jTable1.getSelectedRow();
+                          if(row_val<0){
+                JOptionPane.showMessageDialog(this, "Please select a row");
+                return;
+            }
             
             pstmt.setString(1,model.getValueAt(row_val, 0).toString());
            

@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.jdbcConnection;
@@ -104,7 +105,7 @@ public class DoctorPanel extends javax.swing.JPanel {
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jButton2.setText("Accepted");
+        jButton2.setText("Accept");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -113,7 +114,7 @@ public class DoctorPanel extends javax.swing.JPanel {
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jButton3.setText("Deleted");
+        jButton3.setText("Rejecte");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -231,6 +232,10 @@ public class DoctorPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         int row_val = jTable2.getSelectedRow();
+                              if(row_val<0){
+                JOptionPane.showMessageDialog(this, "Please select a row");
+                return;
+            }
         //        jLabel15.setText(model.getValueAt(row_val, 0).toString());
         String id=(model.getValueAt(row_val, 0).toString());
         String Name=(model.getValueAt(row_val, 1).toString());
@@ -316,6 +321,10 @@ jdbconnection.disConnnect(conn);
     
      DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
      int row_val = jTable1.getSelectedRow();
+                           if(row_val<0){
+                JOptionPane.showMessageDialog(this, "Please select a row");
+                return;
+            }
      
     String viewStatement = "UPDATE requestTable SET status='Completed' WHERE id=?";
     PreparedStatement pstmt;
